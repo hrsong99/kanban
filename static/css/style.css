@@ -1,0 +1,49 @@
+body {
+    font-family: sans-serif;
+    background: #f0fffe;
+    padding-top: 3%;
+}
+a {
+    color: #787878;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.kanban-board {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background: #263952;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+}
+.kanban-column {
+    width: 33.33%;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px;
+    text-align: center;
+    background-color: rgb(192, 221, 246);
+}
+.kanban-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: rgb(235, 246, 250);
+    border-radius: 10px;
+}
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 10px;
+    text-align: center;
+    border: 0;
+    box-sizing: border-box;
+    width:100%;
+}

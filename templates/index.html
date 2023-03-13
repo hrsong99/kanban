@@ -1,0 +1,64 @@
+{% extends 'base.html' %} 
+<!-- Jinja syntax for using base.html as a template -->
+{% block head %}
+{% endblock %}
+
+<title>Kanban Board</title>
+<!-- The Jinja syntax that allows the body to be changed from base.html -->
+{% block body %} 
+<!-- Create a div called kanban-board, which contains three divs called kanban-column -->
+<!-- Each kanban-column contains the content (i.e. kanban-items) from the Tasks table corresponding to their columns of Todo, Doing, or Done -->
+<!-- Below the kanban-items are the forms that allow for the addition of new tasks -->
+<div class="kanban-board">
+    <div class="kanban-column">
+        <h2>To Do</h2>
+        <!-- A for loop that loops through the todo items and renders them individually -->
+        {% for task in todo %}
+        <div class="kanban-item">
+            {{ task.content}} 
+            <!-- A right arrow hyperlink that routes to a function that moves the task to the Doing column -->
+            <a href="/to_doing/{{task.id}}"> > </a>
+            <!-- A delete hyperlink which routes to a function that deletes the task -->
+            <a style="float:right" href="/delete/{{task.id}}"> x </a>
+        </div>
+        <!-- End the for loop -->
+        {% endfor %}
+        <!-- Below is the form that uses the method "POST" to add a new task to Todo -->
+        <!-- The submit button is not displayed so that users can add tasks by pressing Enter -->
+        <form action="/" method="POST">
+            <input type="text" name="add_todo" id="add_todo" placeholder="Add Task" />
+            <input type="submit" style="display: none">
+        </form>
+    </div>
+    <!-- Same as above for the Doing and Done columns, with slight variations for the arrows that move tasks between columns -->
+    <div class="kanban-column">
+        <h2>Doing</h2>
+        {% for task in doing %}
+        <div class="kanban-item">
+            <a href="/to_todo/{{task.id}}"> < </a>
+            {{ task.content}} 
+            <a href="/to_done/{{task.id}}"> > </a>
+            <a style="float:right" href="/delete/{{task.id}}"> x </a>
+        </div>
+        {% endfor %}
+        <form action="/" method="POST">
+            <input type="text" name="add_doing" id="add_doing" placeholder="Add Task" />
+            <input type="submit" style="display: none">
+        </form>
+    </div>
+    <div class="kanban-column">
+        <h2>Done</h2>
+        {% for task in done %}
+        <div class="kanban-item">
+            <a href="/to_doing/{{task.id}}"> < </a>
+            {{ task.content}} 
+            <a style="float:right" href="/delete/{{task.id}}"> x </a>
+        </div>
+        {% endfor %}
+        <form action="/" method="POST">
+            <input type="text" name="add_done" id="add_done" placeholder="Add Task" />
+            <input type="submit" style="display: none">
+        </form>
+    </div>
+</div>
+{% endblock %}
