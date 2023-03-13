@@ -1,4 +1,4 @@
-# Kanban Baord Assignment
+# Kanban Board Assignment
 
 ## How to run
 **macOS:**
