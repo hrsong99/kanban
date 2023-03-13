@@ -30,6 +30,7 @@ This should create a new folder called *Instance* with the file *test.db* inside
 ```bash
 python -m unittest discover
 ```
+For some reason, the test does not go in order and deletes the file first before moving it. If they are run in order individually, there should not be any errors.
 
 ## Overview
 This is the repository for the project. Here's an ovewview of the files:
